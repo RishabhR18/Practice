@@ -1,0 +1,247 @@
+.menu-header{
+    display: flex;
+    justify-content: space-between; /* Places items at opposite ends of the container */
+    align-items: flex-start;
+}
+
+.restaurant-details{
+   margin-top :-24px;
+}
+
+.restaurant-menu-container{
+   
+    /* width:900px; */
+    /* height: 800px; */
+    /* border: 1px solid red; */
+    padding: 16px
+}
+
+.restaurant-menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.restaurant-name{
+    font-size: 1.43rem;
+    font-weight: 600;
+    color: #282c3f;
+    margin-bottom: 8px;
+    text-transform: capitalize;
+}
+
+.restaurant-cuisine{
+    font-size: .93rem;
+    color: #7e808c;
+    height: calc(0.93rem + 2px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 4px;
+    white-space: nowrap;
+}
+
+.restaurant-area{
+    font-size: .93rem;
+    color: #7e808c;
+}
+
+.restaurant-avgRating{
+    color: #3d9b6d;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e9e9eb;
+    font-weight: 700;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.restaurant-totalRating{
+    font-size: 11px;
+    color: #8b8d97;
+    font-family: ProximaNovaCondensedRegular,arial,Helvetica Neue,sans-serif;
+    font-weight: 600;
+}
+
+.restaurant-rating-bar{
+    border: 1px solid #e9e9eb;
+    box-shadow: 0 1px 5px #f9f9f9;
+    border-radius: 6px;
+    text-align: center;
+    padding: 0px 16px;
+    max-width: 100px;
+}
+
+.header-line{
+    border: none;
+    border-bottom: 1px dashed #d3d3d3;
+}
+
+.delievery-time{
+    color: #3e4152;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.time-icon{
+    padding-top: 8px;
+    padding-right: 8px;
+}
+
+.rupee-icon{
+    padding-top: 8px;
+    padding-left: 16px;
+}
+
+.time-block{
+    display: flex;
+    align-items: center;
+}
+
+/* .restaurant-promotion{
+    display: flex;
+    border: 1px solid #e9e9eb;
+    box-sizing: border-box;
+    box-shadow: 0 1px 2px rgba(0,0,0,.04);
+    border-radius: 8px;
+    padding: 8px;
+    height: 64px;
+    min-width: 200px;
+    align-items: center;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin : 12px 4px;
+} */
+
+.res-offer{
+    font-size: 1rem;
+    font-weight: 600;
+    white-space: wrap;
+    color: #686b78;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    border: 1px solid #e9e9eb;
+    box-sizing: border-box;
+    box-shadow: 0 1px 2px rgba(0,0,0,.04);
+    border-radius: 8px;
+    padding: 8px;
+    height: auto;
+    width: 264px;
+    align-items: center;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin : 12px 4px;
+    padding: 8px
+}
+
+.res-offer-details{
+    font-size: .86rem;
+    color: #93959f;
+    margin-top: 4px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+   
+    font-weight: 700;
+    /* font-family: ProximaNovaCondensedRegular,arial,Helvetica Neue,sans-serif; */
+}
+
+.promotion-wrapper{
+    display: flex;
+}
+
+.veg-label{
+    font-size: 1rem;
+    color: #3d4152;
+    font-weight: 600;
+    padding-left: 8px;
+    margin-top: 8px;
+}
+
+.label-divider{
+    border-bottom: 0.5px solid #d3d3d3;
+    margin: 24px auto;
+    width: calc(100% - 32px);
+}
+
+.res-menu-footer-head{
+    font-size: .93rem;
+    color: #93959f;
+    display: flex;
+    align-items: center;
+    background-color: #f1f1f6;
+    padding: 16px;
+}
+
+.res-menu-footer-body{
+    background-color: #f1f1f6;
+    font-size: 1rem;
+    color: #93959f;
+    padding: 16px;
+    border-top: 1px solid #a9abb2;
+    
+}
+
+.res-menu-footer-wrapper{
+    margin-top: 48px;
+}
+
+.res-menu-footer-city{
+    display: flex;
+    align-items: center;
+    padding: 4px 0px;
+    font-weight: 700;
+}
+
+.accordian-header{
+    color: #3e4152;
+    font-weight: 800;
+    font-size: 1.3rem;
+}
+
+.filter-list{
+    display: flex;
+    flex-direction: column;
+    margin: 8px 0px;
+}
+
+.filter-item{
+    /* border-top : 1px solid red; */
+    /* border-bottom: 0.5px solid #d3d3d3; */
+    height: 0.5px;
+    margin-top: -60px;
+}
+
+.card-res-name{
+    margin-right: 4px;
+    font-size: 1.22rem;
+    font-weight: 500;
+    color: #3e4152;
+    word-break: break-word;
+}
+
+.card-res-desc{
+    margin-top: 14px;
+    line-height: 1.3;
+    color: rgba(40,44,63,.45);
+    
+    letter-spacing: -.3px;
+    font-size: 1rem;
+}
+
+.res-block{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: auto;
+    padding:16px 0px;
+    border-bottom: 0.5px solid #d3d3d3;
+}

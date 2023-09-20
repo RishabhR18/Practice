@@ -1,0 +1,58 @@
+.header-wrapper{
+    display: flex;
+    justify-content: space-between;
+}
+.header-icon{
+  margin-left:34px;
+}
+
+.nav-bar{
+  padding-top: 16px;
+}
+.nav-bar >ul{
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-bar>ul>li{
+  list-style-type: none;
+  padding : 0px 48px 0px 4px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.nav-bar>ul>li:hover{
+  color: #ffa700;
+  font-weight: bolder;
+  cursor: pointer;
+}
+
+.login-btn{
+  border: 1px solid #c8c8c8;
+  height: 48px;
+  width: 200px;
+  font-weight: bold;
+  font-size: 24px;
+  text-align: center;
+  background-color: #ffa700;
+  padding: 8px 16px;
+  border-radius: 8px;
+  margin: 16px;
+  color: #fff;
+}
+
+.login-btn:hover{
+  color: black;
+  background-color: orange;
+  cursor: pointer;
+}
+
+.food-icon{
+  width: 238px;
+  height: 176px;
+}
+
+.new-text{
+  color: #ffa700;
+}
+

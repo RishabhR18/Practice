@@ -11,3 +11,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.custom-dropdown{
+  width:567px;
+  height:48px;
+  border-radius: 8px;
+  padding: 12px 16px;
+  background-color: #f9f9f8;
+
+}

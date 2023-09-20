@@ -1,0 +1,103 @@
+.res-card {
+  /* width: 100%; */
+  height: 200px;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+}
+
+.res-card :hover {
+  transform: translateY(-5px); /* Move the card up on hover */
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.card-image {
+  width: 300px;
+  height: auto;
+}
+
+.res-name {
+  margin: 8px;
+  /* -webkit-font-smoothing: antialiased;
+    font-family: "Basis Grotesque Pro"; */
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+  color: rgba(2, 6, 12, 0.75);
+  overflow: hidden;
+  width: 100%;
+  display: -webkit-box;
+  overflow-wrap: break-word;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.res-rating{
+ display: flex;
+ justify-content: start;
+ align-items: center;
+ padding: 0px 8px;
+}
+
+.rating {
+  /* -webkit-font-smoothing: antialiased;
+    font-family: "Basis Grotesque Pro"; */
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(2, 6, 12, 0.75);
+  padding-left: 4px;
+}
+
+.res-category {
+  width: 260px;
+  margin-top: -16px;
+  overflow: hidden;
+  margin: 0px 8px;
+  margin-top: -12px;
+}
+
+.res-categories {
+  /* webkit-font-smoothing: antialiased;
+    font-family: "Basis Grotesque Pro"; */
+  font-size: 16px;
+  font-weight: 200;
+  color: rgba(2, 6, 12, 0.6);
+  overflow: hidden;
+  width: 100%;
+  display: -webkit-box;
+  overflow-wrap: break-word;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  font-weight: bold;
+  overflow: hidden; /* Hide any overflow text */
+  text-overflow: ellipsis; /* Add the ellipsis effect */
+}
+
+.res-location {
+  /* -webkit-font-smoothing: antialiased;
+    font-family: "Basis Grotesque Pro"; */
+  font-size: 16px;
+  font-weight: 200;
+  color: rgba(2, 6, 12, 0.6);
+  overflow: hidden;
+  width: 100%;
+  display: -webkit-box;
+  overflow-wrap: break-word;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  font-weight: bold;
+  margin-top: -8px;
+  padding: 0px 8px;
+}
+
+.card-container {
+  margin: 24px 32px;
+  
+}
+
+.res-details {
+  padding-top: 8px;
+}
+

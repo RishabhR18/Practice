@@ -1,0 +1,26 @@
+.rest-card {
+    width: 20%;
+    height: 200px;
+    border-radius: 16px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    margin: 16px 32px;
+    animation: wave 1.5s infinite ease-in-out;
+  }
+
+  @keyframes rest-card {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-15px);
+    }
+  }
+
+
+  .shimmer-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
