@@ -9,6 +9,7 @@ import SentimentVeryDissatisfiedIcon from "@mui/icons-material/SentimentVeryDiss
 import Recommendations from "../../Recommendation_section/Places/Recommendations";
 import Cuisines from "../../Recommendation_section/Cuisines/Cuisines";
 import Explore from "../../Recommendation_section/Explore/Explore";
+import { Link } from "react-router-dom";
 
 // const resObj = [
 //   {
@@ -829,7 +830,15 @@ const Restaurant = () => {
             </span>
           ) : (
             filteredList.map((restaurants) => {
-              return <RestaurantCard resData={restaurants} />;
+              console.log("check here",restaurants);
+              return (
+                <Link
+                  key={restaurants?.id}
+                  to={"/restaurant/" + restaurants?.id}
+                >
+                  <RestaurantCard resData={restaurants} />{" "}
+                </Link>
+              );
             })
           )}
         </div>

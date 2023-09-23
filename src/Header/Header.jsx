@@ -9,6 +9,7 @@ import {
   ShoppingCartOutlined,
   StorefrontOutlined,
 } from "@mui/icons-material";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [btnName,setBtnName] = useState ("Login");
@@ -25,7 +26,7 @@ const Header = () => {
           <ul>
             <SearchOutlined />
             <li>Search</li>
-            <InfoOutlined /> <li>About us</li>
+             <Link to="/about"><InfoOutlined /> <li>About us</li></Link>
             <li>Offers <sup className="new-text">New</sup></li>
             <ShoppingCartOutlined /> <li>Orders</li>
             <StorefrontOutlined />
