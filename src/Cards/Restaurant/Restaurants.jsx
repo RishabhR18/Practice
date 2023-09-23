@@ -10,6 +10,8 @@ import Recommendations from "../../Recommendation_section/Places/Recommendations
 import Cuisines from "../../Recommendation_section/Cuisines/Cuisines";
 import Explore from "../../Recommendation_section/Explore/Explore";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../../utils/CustomHooks/useOnlineStatus";
+import { RESTAURANT_BLOCK_URL } from "../../utils/constant";
 
 // const resObj = [
 //   {
@@ -721,9 +723,7 @@ const Restaurant = () => {
   }, []);
 
   const fetchData = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.590798&lng=88.423888&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
+    const data = await fetch(RESTAURANT_BLOCK_URL);
     const apiData = await data.json();
     const resolvedData =
       apiData.data.cards[5].card.card.gridElements.infoWithStyle.restaurants.map(
@@ -783,6 +783,17 @@ const Restaurant = () => {
     setFilteredList(searchList);
   };
 
+  const onlineStatus = useOnlineStatus();
+  if (onlineStatus == false) {
+    return (
+      <h1 style={{ textAlign: "center" }}>
+        {" "}
+        Looks like somethoing wrong with your intenet.Pease check your
+        connection.
+      </h1>
+    );
+  }
+
   return resList.length === 0 ? (
     <Shimmer />
   ) : (
@@ -830,7 +841,7 @@ const Restaurant = () => {
             </span>
           ) : (
             filteredList.map((restaurants) => {
-              console.log("check here",restaurants);
+              console.log("check here", restaurants);
               return (
                 <Link
                   key={restaurants?.id}

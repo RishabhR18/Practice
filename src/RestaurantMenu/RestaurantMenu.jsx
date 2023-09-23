@@ -6,17 +6,12 @@ import StarSharpIcon from "@mui/icons-material/StarSharp";
 import NewReleasesIcon from "@mui/icons-material/NewReleases";
 import { ExpandMoreOutlined } from "@mui/icons-material";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
-import Pizza1 from "../utils/images/p1.webp";
-import Pizza2 from "../utils/images/p2.webp";
-import Pizza3 from "../utils/images/p3.webp";
-import Pizza4 from "../utils/images/p4.webp";
-import Pizza5 from "../utils/images/p5.webp";
+import { RESTAURANT_MENU_URL } from "../utils/constant";
+import useRestaturantData from "../utils/CustomHooks/useRestaturantData";
 import VegIcon from "../utils/images/veg.png";
 import NonVegIcon from "../utils/images/non-veg.png";
 import { useParams } from "react-router-dom";
 import Shimmer from "../Loader/Shimmer";
-// import Pizza6 from "../utils/images/p6.webp";
-// import FssaiIcon from  '../utils/images/fssai.webp';
 import {
   Switch,
   Accordion,
@@ -26,26 +21,10 @@ import {
 } from "@mui/material";
 
 const RestaurantMenu = () => {
-  const [restaurantMenu, setRestaurantMenu] = useState(null);
   const [expanded, setExpanded] = useState(null);
-  const  {resId} = useParams();
-  console.log("ttttttttttt",resId);
-  useEffect(() => {
-    fetchList();
-  }, []);
+  const { resId } = useParams();
 
-  const fetchList = async () => {
-    const data = await fetch(
-       "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=22.590798&lng=88.423888&restaurantId="+resId+"&catalog_qa=undefined&submitAction=ENTER"
-
-      // "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=22.590798&lng=88.423888&restaurantId=23925&catalog_qa=undefined&submitAction=ENTER"
-    );
-    const apiData = await data.json();
-
-    const resValue = apiData.data;
-
-    setRestaurantMenu(resValue);
-  };
+  const restaurantMenu = useRestaturantData(resId);
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : null);
@@ -54,25 +33,6 @@ const RestaurantMenu = () => {
   if (restaurantMenu === null) {
     return <Shimmer />;
   }
-
-  // const { itemCards } =
-  //   restaurantMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
-  //     ?.card;
-
-  // const { newLaunches } =
-  //   restaurantMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
-  //     ?.card;
-  // const { matchDay } =
-  //   restaurantMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[4]?.card
-  //     ?.card;
-  // const { highRated } =
-  //   restaurantMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[5]?.card
-  //     ?.card;
-  // const { bestSeller } =
-  //   restaurantMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[6]?.card
-  //     ?.card;
-
-  // console.log("ddddddddddddd", itemCards, newLaunches,matchDay,highRated,bestSeller);
 
   return (
     <>
@@ -159,40 +119,45 @@ const RestaurantMenu = () => {
             </AccordionSummary>
             <AccordionDetails>
               <div className="filter-list">
-                {restaurantMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR
-                    ?.cards[2]?.card?.card.itemCards.map((item) => {
-                  return (
-                    <div className="res-block">
-                      <span className="filter-item">
-                        <li style={{ listStyleType: "none" }}>
+                {restaurantMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card.itemCards.map(
+                  (item) => {
+                    return (
+                      <div className="res-block">
+                        <span className="filter-item">
+                          <li style={{ listStyleType: "none" }}>
+                            <img
+                              src={NonVegIcon}
+                              style={{ width: "12px", height: "12px" }}
+                            />{" "}
+                            <span className="card-res-name">
+                              {item?.card?.info?.name}
+                            </span>
+                            <div className="price">
+                              {item?.card?.info?.price / 100}
+                            </div>
+                            <div className="card-res-desc">
+                              {" "}
+                              {item?.card?.info?.description}{" "}
+                            </div>
+                          </li>
+                        </span>
+                        <span>
                           <img
-                            src={NonVegIcon}
-                            style={{ width: "12px", height: "12px" }}
-                          />{" "}
-                          <span className="card-res-name">
-                            {item?.card?.info?.name}
-                          </span>
-                          <div className="price">
-                            {item?.card?.info?.price / 100}
-                          </div>
-                          <div className="card-res-desc">
-                            {" "}
-                            {item?.card?.info?.description}{" "}
-                          </div>
-                        </li>
-                      </span>
-                      <span>
-                        <img
-                          src={
-                            "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/" +
-                            item?.card?.info?.imageId
-                          }
-                          style={{ borderRadius: "16px",height:"120px",width:"200px" }}
-                        />
-                      </span>
-                    </div>
-                  );
-                })}
+                            src={
+                              "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/" +
+                              item?.card?.info?.imageId
+                            }
+                            style={{
+                              borderRadius: "16px",
+                              height: "120px",
+                              width: "200px",
+                            }}
+                          />
+                        </span>
+                      </div>
+                    );
+                  }
+                )}
               </div>
             </AccordionDetails>
           </Accordion>
@@ -211,40 +176,45 @@ const RestaurantMenu = () => {
             </AccordionSummary>
             <AccordionDetails>
               <div className="filter-list">
-                {restaurantMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR
-                    ?.cards[3]?.card?.card.itemCards.map((item) => {
-                  return (
-                    <div className="res-block">
-                      <span className="filter-item">
-                        <li style={{ listStyleType: "none" }}>
+                {restaurantMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[3]?.card?.card.itemCards.map(
+                  (item) => {
+                    return (
+                      <div className="res-block">
+                        <span className="filter-item">
+                          <li style={{ listStyleType: "none" }}>
+                            <img
+                              src={NonVegIcon}
+                              style={{ width: "12px", height: "12px" }}
+                            />{" "}
+                            <span className="card-res-name">
+                              {item?.card?.info?.name}
+                            </span>
+                            <div className="price">
+                              {item?.card?.info?.price / 100}
+                            </div>
+                            <div className="card-res-desc">
+                              {" "}
+                              {item?.card?.info?.description}
+                            </div>
+                          </li>
+                        </span>
+                        <span>
                           <img
-                            src={NonVegIcon}
-                            style={{ width: "12px", height: "12px" }}
-                          />{" "}
-                          <span className="card-res-name">
-                            {item?.card?.info?.name}
-                          </span>
-                          <div className="price">
-                            {item?.card?.info?.price / 100}
-                          </div>
-                          <div className="card-res-desc">
-                            {" "}
-                            {item?.card?.info?.description}
-                          </div>
-                        </li>
-                      </span>
-                      <span>
-                      <img
-                          src={
-                            "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/" +
-                            item?.card?.info?.imageId
-                          }
-                          style={{ borderRadius: "16px",height:"120px",width:"200px" }}
-                        />
-                      </span>
-                    </div>
-                  );
-                })}
+                            src={
+                              "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/" +
+                              item?.card?.info?.imageId
+                            }
+                            style={{
+                              borderRadius: "16px",
+                              height: "120px",
+                              width: "200px",
+                            }}
+                          />
+                        </span>
+                      </div>
+                    );
+                  }
+                )}
               </div>
             </AccordionDetails>
           </Accordion>
@@ -263,40 +233,45 @@ const RestaurantMenu = () => {
             </AccordionSummary>
             <AccordionDetails>
               <div className="filter-list">
-                {restaurantMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR
-                    ?.cards[4]?.card?.card.itemCards.map((item) => {
-                  return (
-                    <div className="res-block">
-                      <span className="filter-item">
-                        <li style={{ listStyleType: "none" }}>
+                {restaurantMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[4]?.card?.card.itemCards.map(
+                  (item) => {
+                    return (
+                      <div className="res-block">
+                        <span className="filter-item">
+                          <li style={{ listStyleType: "none" }}>
+                            <img
+                              src={NonVegIcon}
+                              style={{ width: "12px", height: "12px" }}
+                            />{" "}
+                            <span className="card-res-name">
+                              {item?.card?.info?.name}
+                            </span>
+                            <div className="price">
+                              {item?.card?.info?.price / 100}
+                            </div>
+                            <div className="card-res-desc">
+                              {" "}
+                              {item?.card?.info?.description}{" "}
+                            </div>
+                          </li>
+                        </span>
+                        <span>
                           <img
-                            src={NonVegIcon}
-                            style={{ width: "12px", height: "12px" }}
-                          />{" "}
-                          <span className="card-res-name">
-                            {item?.card?.info?.name}
-                          </span>
-                          <div className="price">
-                            {item?.card?.info?.price / 100}
-                          </div>
-                          <div className="card-res-desc">
-                            {" "}
-                            {item?.card?.info?.description}{" "}
-                          </div>
-                        </li>
-                      </span>
-                      <span>
-                      <img
-                          src={
-                            "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/" +
-                            item?.card?.info?.imageId
-                          }
-                          style={{ borderRadius: "16px",height:"120px",width:"200px" }}
-                        />
-                      </span>
-                    </div>
-                  );
-                })}
+                            src={
+                              "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/" +
+                              item?.card?.info?.imageId
+                            }
+                            style={{
+                              borderRadius: "16px",
+                              height: "120px",
+                              width: "200px",
+                            }}
+                          />
+                        </span>
+                      </div>
+                    );
+                  }
+                )}
               </div>
             </AccordionDetails>
           </Accordion>
@@ -315,40 +290,45 @@ const RestaurantMenu = () => {
             </AccordionSummary>
             <AccordionDetails>
               <div className="filter-list">
-                {restaurantMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR
-                    ?.cards[5]?.card?.card.itemCards.map((item) => {
-                  return (
-                    <div className="res-block">
-                      <span className="filter-item">
-                        <li style={{ listStyleType: "none" }}>
+                {restaurantMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[5]?.card?.card.itemCards.map(
+                  (item) => {
+                    return (
+                      <div className="res-block">
+                        <span className="filter-item">
+                          <li style={{ listStyleType: "none" }}>
+                            <img
+                              src={NonVegIcon}
+                              style={{ width: "12px", height: "12px" }}
+                            />{" "}
+                            <span className="card-res-name">
+                              {item?.card?.info?.name}
+                            </span>
+                            <div className="price">
+                              {item?.card?.info?.price / 100}
+                            </div>
+                            <div className="card-res-desc">
+                              {" "}
+                              {item?.card?.info?.description}{" "}
+                            </div>
+                          </li>
+                        </span>
+                        <span>
                           <img
-                            src={NonVegIcon}
-                            style={{ width: "12px", height: "12px" }}
-                          />{" "}
-                          <span className="card-res-name">
-                            {item?.card?.info?.name}
-                          </span>
-                          <div className="price">
-                            {item?.card?.info?.price / 100}
-                          </div>
-                          <div className="card-res-desc">
-                            {" "}
-                            {item?.card?.info?.description}{" "}
-                          </div>
-                        </li>
-                      </span>
-                      <span>
-                      <img
-                          src={
-                            "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/" +
-                            item?.card?.info?.imageId
-                          }
-                          style={{ borderRadius: "16px",height:"120px",width:"200px" }}
-                        />
-                      </span>
-                    </div>
-                  );
-                })}
+                            src={
+                              "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/" +
+                              item?.card?.info?.imageId
+                            }
+                            style={{
+                              borderRadius: "16px",
+                              height: "120px",
+                              width: "200px",
+                            }}
+                          />
+                        </span>
+                      </div>
+                    );
+                  }
+                )}
               </div>
             </AccordionDetails>
           </Accordion>
@@ -367,44 +347,48 @@ const RestaurantMenu = () => {
             </AccordionSummary>
             <AccordionDetails>
               <div className="filter-list">
-                {restaurantMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR
-                    ?.cards[6]?.card?.card.itemCards.map((item) => {
-                  return (
-                    <div className="res-block">
-                      <span className="filter-item">
-                        <li style={{ listStyleType: "none" }}>
+                {restaurantMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[6]?.card?.card.itemCards.map(
+                  (item) => {
+                    return (
+                      <div className="res-block">
+                        <span className="filter-item">
+                          <li style={{ listStyleType: "none" }}>
+                            <img
+                              src={NonVegIcon}
+                              style={{ width: "12px", height: "12px" }}
+                            />{" "}
+                            <span className="card-res-name">
+                              {item?.card?.info?.name}
+                            </span>
+                            <div className="price">
+                              {item?.card?.info?.price / 100}
+                            </div>
+                            <div className="card-res-desc">
+                              {" "}
+                              {item?.card?.info?.description}{" "}
+                            </div>
+                          </li>
+                        </span>
+                        <span>
                           <img
-                            src={NonVegIcon}
-                            style={{ width: "12px", height: "12px" }}
-                          />{" "}
-                          <span className="card-res-name">
-                            {item?.card?.info?.name}
-                          </span>
-                          <div className="price">
-                            {item?.card?.info?.price / 100}
-                          </div>
-                          <div className="card-res-desc">
-                            {" "}
-                            {item?.card?.info?.description}{" "}
-                          </div>
-                        </li>
-                      </span>
-                      <span>
-                      <img
-                          src={
-                            "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/" +
-                            item?.card?.info?.imageId
-                          }
-                          style={{ borderRadius: "16px",height:"120px",width:"200px" }}
-                        />
-                      </span>
-                    </div>
-                  );
-                })}
+                            src={
+                              "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/" +
+                              item?.card?.info?.imageId
+                            }
+                            style={{
+                              borderRadius: "16px",
+                              height: "120px",
+                              width: "200px",
+                            }}
+                          />
+                        </span>
+                      </div>
+                    );
+                  }
+                )}
               </div>
             </AccordionDetails>
           </Accordion>
-
 
           <Accordion
             expanded={expanded === "panel6"}
@@ -420,44 +404,48 @@ const RestaurantMenu = () => {
             </AccordionSummary>
             <AccordionDetails>
               <div className="filter-list">
-                {restaurantMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR
-                    ?.cards[7]?.card?.card.itemCards.map((item) => {
-                  return (
-                    <div className="res-block">
-                      <span className="filter-item">
-                        <li style={{ listStyleType: "none" }}>
+                {restaurantMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[7]?.card?.card.itemCards.map(
+                  (item) => {
+                    return (
+                      <div className="res-block">
+                        <span className="filter-item">
+                          <li style={{ listStyleType: "none" }}>
+                            <img
+                              src={NonVegIcon}
+                              style={{ width: "12px", height: "12px" }}
+                            />{" "}
+                            <span className="card-res-name">
+                              {item?.card?.info?.name}
+                            </span>
+                            <div className="price">
+                              {item?.card?.info?.price / 100}
+                            </div>
+                            <div className="card-res-desc">
+                              {" "}
+                              {item?.card?.info?.description}{" "}
+                            </div>
+                          </li>
+                        </span>
+                        <span>
                           <img
-                            src={NonVegIcon}
-                            style={{ width: "12px", height: "12px" }}
-                          />{" "}
-                          <span className="card-res-name">
-                            {item?.card?.info?.name}
-                          </span>
-                          <div className="price">
-                            {item?.card?.info?.price / 100}
-                          </div>
-                          <div className="card-res-desc">
-                            {" "}
-                            {item?.card?.info?.description}{" "}
-                          </div>
-                        </li>
-                      </span>
-                      <span>
-                      <img
-                          src={
-                            "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/" +
-                            item?.card?.info?.imageId
-                          }
-                          style={{ borderRadius: "16px",height:"120px",width:"200px" }}
-                        />
-                      </span>
-                    </div>
-                  );
-                })}
+                            src={
+                              "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/" +
+                              item?.card?.info?.imageId
+                            }
+                            style={{
+                              borderRadius: "16px",
+                              height: "120px",
+                              width: "200px",
+                            }}
+                          />
+                        </span>
+                      </div>
+                    );
+                  }
+                )}
               </div>
             </AccordionDetails>
           </Accordion>
-
 
           <Accordion
             expanded={expanded === "panel7"}
@@ -473,44 +461,48 @@ const RestaurantMenu = () => {
             </AccordionSummary>
             <AccordionDetails>
               <div className="filter-list">
-                {restaurantMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR
-                    ?.cards[8]?.card?.card.itemCards.map((item) => {
-                  return (
-                    <div className="res-block">
-                      <span className="filter-item">
-                        <li style={{ listStyleType: "none" }}>
+                {restaurantMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[8]?.card?.card.itemCards.map(
+                  (item) => {
+                    return (
+                      <div className="res-block">
+                        <span className="filter-item">
+                          <li style={{ listStyleType: "none" }}>
+                            <img
+                              src={NonVegIcon}
+                              style={{ width: "12px", height: "12px" }}
+                            />{" "}
+                            <span className="card-res-name">
+                              {item?.card?.info?.name}
+                            </span>
+                            <div className="price">
+                              {item?.card?.info?.price / 100}
+                            </div>
+                            <div className="card-res-desc">
+                              {" "}
+                              {item?.card?.info?.description}{" "}
+                            </div>
+                          </li>
+                        </span>
+                        <span>
                           <img
-                            src={NonVegIcon}
-                            style={{ width: "12px", height: "12px" }}
-                          />{" "}
-                          <span className="card-res-name">
-                            {item?.card?.info?.name}
-                          </span>
-                          <div className="price">
-                            {item?.card?.info?.price / 100}
-                          </div>
-                          <div className="card-res-desc">
-                            {" "}
-                            {item?.card?.info?.description}{" "}
-                          </div>
-                        </li>
-                      </span>
-                      <span>
-                      <img
-                          src={
-                            "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/" +
-                            item?.card?.info?.imageId
-                          }
-                          style={{ borderRadius: "16px",height:"120px",width:"200px" }}
-                        />
-                      </span>
-                    </div>
-                  );
-                })}
+                            src={
+                              "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/" +
+                              item?.card?.info?.imageId
+                            }
+                            style={{
+                              borderRadius: "16px",
+                              height: "120px",
+                              width: "200px",
+                            }}
+                          />
+                        </span>
+                      </div>
+                    );
+                  }
+                )}
               </div>
             </AccordionDetails>
           </Accordion>
-
 
           <div className="res-menu-footer-wrapper">
             <div className="res-menu-footer-head">
