@@ -111,10 +111,7 @@ const RestaurantMenu = () => {
           >
             <AccordionSummary expandIcon={<ExpandMoreOutlined />}>
               <div className="accordian-header">
-                {
-                  restaurantMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR
-                    ?.cards[2]?.card?.card.title
-                }
+                {restaurantMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card.title.toUpperCase()}
               </div>
             </AccordionSummary>
             <AccordionDetails>
@@ -125,10 +122,18 @@ const RestaurantMenu = () => {
                       <div className="res-block">
                         <span className="filter-item">
                           <li style={{ listStyleType: "none" }}>
-                            <img
-                              src={NonVegIcon}
-                              style={{ width: "12px", height: "12px" }}
-                            />{" "}
+                            {item?.card?.info.itemAttribute?.vegClassifier  ==="NONVEG"? (
+                              <img
+                                src={NonVegIcon}
+                                style={{ width: "14px", height: "14px", }}
+                              />
+                            ) : (
+                              <img
+                                src={VegIcon}
+                                style={{ width: "14px", height: "14px" }}
+                              />
+                            )}
+
                             <span className="card-res-name">
                               {item?.card?.info?.name}
                             </span>
@@ -182,10 +187,17 @@ const RestaurantMenu = () => {
                       <div className="res-block">
                         <span className="filter-item">
                           <li style={{ listStyleType: "none" }}>
-                            <img
-                              src={NonVegIcon}
-                              style={{ width: "12px", height: "12px" }}
-                            />{" "}
+                          {item?.card?.info.itemAttribute?.vegClassifier  ==="NONVEG"? (
+                              <img
+                                src={NonVegIcon}
+                                style={{ width: "14px", height: "14px", }}
+                              />
+                            ) : (
+                              <img
+                                src={VegIcon}
+                                style={{ width: "14px", height: "14px" }}
+                              />
+                            )}
                             <span className="card-res-name">
                               {item?.card?.info?.name}
                             </span>
@@ -239,10 +251,17 @@ const RestaurantMenu = () => {
                       <div className="res-block">
                         <span className="filter-item">
                           <li style={{ listStyleType: "none" }}>
-                            <img
-                              src={NonVegIcon}
-                              style={{ width: "12px", height: "12px" }}
-                            />{" "}
+                          {item?.card?.info.itemAttribute?.vegClassifier  ==="NONVEG"? (
+                              <img
+                                src={NonVegIcon}
+                                style={{ width: "14px", height: "14px", }}
+                              />
+                            ) : (
+                              <img
+                                src={VegIcon}
+                                style={{ width: "14px", height: "14px" }}
+                              />
+                            )}
                             <span className="card-res-name">
                               {item?.card?.info?.name}
                             </span>
@@ -296,10 +315,17 @@ const RestaurantMenu = () => {
                       <div className="res-block">
                         <span className="filter-item">
                           <li style={{ listStyleType: "none" }}>
-                            <img
-                              src={NonVegIcon}
-                              style={{ width: "12px", height: "12px" }}
-                            />{" "}
+                          {item?.card?.info.itemAttribute?.vegClassifier  ==="NONVEG"? (
+                              <img
+                                src={NonVegIcon}
+                                style={{ width: "14px", height: "14px", }}
+                              />
+                            ) : (
+                              <img
+                                src={VegIcon}
+                                style={{ width: "14px", height: "14px" }}
+                              />
+                            )}
                             <span className="card-res-name">
                               {item?.card?.info?.name}
                             </span>
@@ -353,10 +379,17 @@ const RestaurantMenu = () => {
                       <div className="res-block">
                         <span className="filter-item">
                           <li style={{ listStyleType: "none" }}>
-                            <img
-                              src={NonVegIcon}
-                              style={{ width: "12px", height: "12px" }}
-                            />{" "}
+                          {item?.card?.info.itemAttribute?.vegClassifier  ==="NONVEG"? (
+                              <img
+                                src={NonVegIcon}
+                                style={{ width: "14px", height: "14px", }}
+                              />
+                            ) : (
+                              <img
+                                src={VegIcon}
+                                style={{ width: "14px", height: "14px" }}
+                              />
+                            )}
                             <span className="card-res-name">
                               {item?.card?.info?.name}
                             </span>
@@ -410,10 +443,17 @@ const RestaurantMenu = () => {
                       <div className="res-block">
                         <span className="filter-item">
                           <li style={{ listStyleType: "none" }}>
-                            <img
-                              src={NonVegIcon}
-                              style={{ width: "12px", height: "12px" }}
-                            />{" "}
+                          {item?.card?.info.itemAttribute?.vegClassifier  ==="NONVEG"? (
+                              <img
+                                src={NonVegIcon}
+                                style={{ width: "14px", height: "14px", }}
+                              />
+                            ) : (
+                              <img
+                                src={VegIcon}
+                                style={{ width: "14px", height: "14px" }}
+                              />
+                            )}
                             <span className="card-res-name">
                               {item?.card?.info?.name}
                             </span>
@@ -467,10 +507,17 @@ const RestaurantMenu = () => {
                       <div className="res-block">
                         <span className="filter-item">
                           <li style={{ listStyleType: "none" }}>
-                            <img
-                              src={NonVegIcon}
-                              style={{ width: "12px", height: "12px" }}
-                            />{" "}
+                          {item?.card?.info.itemAttribute?.vegClassifier  ==="NONVEG"? (
+                              <img
+                                src={NonVegIcon}
+                                style={{ width: "14px", height: "14px", }}
+                              />
+                            ) : (
+                              <img
+                                src={VegIcon}
+                                style={{ width: "14px", height: "14px" }}
+                              />
+                            )}
                             <span className="card-res-name">
                               {item?.card?.info?.name}
                             </span>
