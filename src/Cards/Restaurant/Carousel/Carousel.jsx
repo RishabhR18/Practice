@@ -17,8 +17,9 @@ import Cakes from "../../../utils/images/Cakes.webp";
 import Dessets from "../../../utils/images/Desserts.webp";
 import Rasgulla from "../../../utils/images/Rasgulla.webp";
 import Veg from "../../../utils/images/Pure_Veg.webp";
-
+import PromotionCarousel from "./PromotionCarousel";
 import "./Carousel.css";
+import OfferCarousel from  "./OfferCarousel";
 
 const CarouselArr = [
   {
@@ -70,13 +71,11 @@ const CarouselArr = [
 const Carousel = () => {
   return (
     <>
-      <div className="carousel-wrapper">
-        <div>
-          <div className="carousel-header">Rishabh, what's on your mind?</div>
-          {CarouselArr.map((caraouselImage) => {
-            return <img src={caraouselImage.image} className="image-list" />;
-          })}
-        </div>
+      <div style={{margin:"0 52px"}}>
+      <div className="carousel-header">Best offers for you</div>
+         <OfferCarousel/>
+        <div className="carousel-header">Rishabh, what's on your mind?</div>
+        <PromotionCarousel />
       </div>
     </>
   );

@@ -19,3 +19,15 @@
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
 }
+
+.carousel-container{
+  width: 73%; /* Set the desired width for the container */
+  overflow-x: auto; 
+  white-space: nowrap;
+}
+
+.scrollable-content{
+  width: 100%;
+}
+
+

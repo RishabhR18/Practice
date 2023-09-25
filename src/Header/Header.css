@@ -1,6 +1,7 @@
 .header-wrapper{
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 .header-icon{
   margin-left:34px;
@@ -8,6 +9,8 @@
 
 .nav-bar{
   padding-top: 16px;
+  display: flex;
+  justify-content: center;
 }
 .nav-bar >ul{
   display: flex;
@@ -16,7 +19,7 @@
 
 .nav-bar>ul>li{
   list-style-type: none;
-  padding : 0px 48px 0px 4px;
+  padding : 0px 72px 0px 8px;
   font-size: 18px;
   font-weight: bold;
 }
@@ -56,3 +59,15 @@
   color: #ffa700;
 }
 
+.link{
+  font-weight: 800;
+  font-size: 22px;
+  text-decoration: none;
+  color:black;
+  list-style-type: none;
+  padding: 0px 56px 0 4px;
+}
+
+.link:hover{
+  color: #ffa700;
+}

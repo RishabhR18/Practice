@@ -36,3 +36,36 @@
     transform: rotate(360deg);
   }
 }
+
+
+/* Create CSS variables (custom properties) for scrollbar customization */
+:root {
+  --scrollbar-width: 10px !important; /* Change the scrollbar width */
+  --scrollbar-color-thumb: #3498db !important; /* Change the thumb color */
+  --scrollbar-color-track: #f1f1f1  !important; /* Change the track color */
+  --scrollbar-height: 12px !important; /* Change the scrollbar height */
+}
+
+/* Apply custom styles to the scrollable container */
+.scroll-container {
+  width: 300px; /* Set the desired width for the container */
+  overflow-x: auto; /* Enable horizontal scrolling */
+  white-space: nowrap; /* Prevent text from wrapping to the next line */
+  scrollbar-width: var(--scrollbar-width); /* Set the scrollbar width */
+}
+
+/* Style the scrollbar thumb (draggable part) */
+.scroll-container::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-color-thumb); /* Set the thumb color */
+  border-radius: var(--scrollbar-width); /* Set the border radius to make it round */
+}
+
+/* Style the scrollbar track (non-draggable part) */
+.scroll-container::-webkit-scrollbar-track {
+  background-color: var(--scrollbar-color-track); /* Set the track color */
+}
+
+/* Set the scrollbar height */
+.scroll-container::-webkit-scrollbar {
+  height: var(--scrollbar-height); /* Set the scrollbar height */
+}

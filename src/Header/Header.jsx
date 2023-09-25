@@ -12,29 +12,52 @@ import {
 import { Link } from "react-router-dom";
 
 const Header = () => {
-  const [btnName,setBtnName] = useState ("Login");
-  const controlBtn =() =>{
-    btnName === "Login" ? setBtnName ("Logout") : setBtnName ("Login");
-  }
+  const [btnName, setBtnName] = useState("Login");
+  const controlBtn = () => {
+    btnName === "Login" ? setBtnName("Logout") : setBtnName("Login");
+  };
   return (
     <Fragment>
       <div className="header-wrapper">
         <span className="header-icon">
-          <img src={FoodIcon} alt="food-icon"  className="food-icon"/>
+          <img src={FoodIcon} alt="food-icon" className="food-icon" />
         </span>
         <nav className="nav-bar">
           <ul>
             <SearchOutlined />
-            <li>Search</li>
-             <Link to="/about"><InfoOutlined /> <li>About us</li></Link>
-            <li>Offers <sup className="new-text">New</sup></li>
-            <ShoppingCartOutlined /> <li>Orders</li>
+            <Link to="/search" className="link">
+              {" "}
+              <li>Search</li>
+            </Link>
+            <InfoOutlined />{" "}
+            <Link to="/about" className="link">
+              {" "}
+              <li>About us</li>
+            </Link>
+            <Link to="/offers" className="link" style={{marginTop:"-6px"}}>
+              {" "}
+              <li>Offers <sup className="new-text">New</sup> </li>
+            </Link>
+            <ShoppingCartOutlined />{" "}
+            <Link to="/orders" className="link">
+              {" "}
+              <li>Orders</li>
+            </Link>
             <StorefrontOutlined />
-            <li>Stores</li>
-            <ContactSupportOutlined /> <li>Help & Support </li>
+            <Link to="/stores" className="link">
+              {" "}
+              <li>Stores</li>
+            </Link>
+            <ContactSupportOutlined />{" "}
+            <Link to="/about" className="link">
+              {" "}
+              <li>Help and Support</li>
+            </Link>
           </ul>
         </nav>
-        <button className="login-btn" onClick={controlBtn}>{btnName}</button>
+        <button className="login-btn" onClick={controlBtn}>
+          {btnName}
+        </button>
       </div>
     </Fragment>
   );

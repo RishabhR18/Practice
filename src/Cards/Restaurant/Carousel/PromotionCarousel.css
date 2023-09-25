@@ -1,0 +1,41 @@
+.items-image{
+    width: 140px;
+    padding: 0 16px;
+}
+
+.promotion-carousel{
+    position: relative;
+    overflow: hidden;
+    padding: 24px;
+}
+
+.promotion-container{
+    padding: 0 32px;
+    display: flex;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    
+}
+
+.prev-btn , .next-btn {
+  border-radius: 50%;
+  font-size: 22px;
+  color: #fff;
+  background-color: #ffa700;
+  padding: 10px 16px;
+  /* width:60px;
+  height: 100%; */
+  border: none;
+  font-weight: 700;
+  position: absolute;
+  top:69px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.next-btn{
+    right: 0;
+}

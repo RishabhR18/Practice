@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Restaurant from './Cards/Restaurant/Restaurants';
-import About from './About/About';
+//import About from './About/About';
 import Header from './Header/Header';
 import Footer from './Footer/Footer';
 import { RouterProvider,Outlet,createBrowserRouter } from 'react-router-dom';
@@ -12,6 +12,8 @@ import Error from './Error/Error';
 import RestaurantMenu from './RestaurantMenu/RestaurantMenu';
 
 
+
+const About = lazy(()=>import("./About/About"));
 const AppLayout = () => {
   return (
     <React.Fragment>
@@ -33,18 +35,8 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/about",
-        element: <About/>,
+        element: <Suspense fallback={<h1>Loading...</h1>}><About/></Suspense>,
       },
-      {
-
-      },
-      {
-
-      },
-      {
-
-      },
-     
       {
         path: "/restaurant/:resId",
         element: <RestaurantMenu/>
